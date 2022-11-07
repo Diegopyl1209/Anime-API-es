@@ -21,16 +21,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - env:
+      env:
         MYSQL_USER: ${{ secrets.MYSQL_USER }}
         MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
         MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
         MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
         MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
     - run: echo "$MYSQL_PORT"
     
     - run: npm install
