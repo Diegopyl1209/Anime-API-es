@@ -31,7 +31,7 @@ jobs:
         MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
         MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
         MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
-    - run: echo ${{ secrets.MYSQL_USER }}
+    - run: echo "$MYSQL_PORT"
     
     - run: npm install
     - run: npm start
