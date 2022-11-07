@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -26,10 +26,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
       env:
-        MYSQL_USER: ${{secrets.MYSQL_USER}}
-        MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE}}
-        MYSQL_HOST: ${{secrets.MYSQL_HOST}}
-        MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
-        MYSQL_PORT: ${{secrets.MYSQL_PORT}}
+        MYSQL_USER: ${{ secrets.MYSQL_USER }}
+        MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+        MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+        MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+        MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
+    - run: echo secrets.MYSQL_USER
+    
     - run: npm install
     - run: npm start
